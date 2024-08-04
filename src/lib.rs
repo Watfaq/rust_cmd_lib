@@ -372,6 +372,7 @@
 pub use cmd_lib_macros::{
     cmd_die, main, run_cmd, run_fun, spawn, spawn_with_output, use_custom_cmd,
 };
+pub use tracing::{debug, error, info, trace, warn};
 /// Return type for [`run_fun!()`] macro.
 pub type FunResult = std::io::Result<String>;
 /// Return type for [`run_cmd!()`] macro.
@@ -379,16 +380,11 @@ pub type CmdResult = std::io::Result<()>;
 pub use child::{CmdChildren, FunChildren};
 pub use io::{CmdIn, CmdOut};
 #[doc(hidden)]
-pub use log as inner_log;
-#[doc(hidden)]
-pub use logger::try_init_default_logger;
-#[doc(hidden)]
 pub use process::{register_cmd, AsOsStr, Cmd, CmdString, Cmds, GroupCmds, Redirect};
 pub use process::{set_debug, set_pipefail, CmdEnv};
 
 mod builtins;
 mod child;
 mod io;
-mod logger;
 mod process;
 mod thread_local;
